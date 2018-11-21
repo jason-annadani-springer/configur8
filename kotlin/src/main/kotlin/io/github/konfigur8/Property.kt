@@ -2,7 +2,7 @@ package io.github.konfigur8
 
 import java.util.*
 
-class Property<T>(val name: String, val deserialize: (String) -> T, val serialize: (T) -> String = { it: T -> it.toString() }, val exposeMode: ExposeMode = ExposeMode.Public) {
+data class Property<T>(val name: String, val deserialize: (String) -> T, val serialize: (T) -> String = { it: T -> it.toString() }, val exposeMode: ExposeMode = ExposeMode.Public) {
     override fun toString() = name
 
     companion object {

@@ -111,4 +111,11 @@ class ConfigurationTest {
         assertThat(config.reifyFrom(emptyMap()).valueOf(userProperty), equalTo("eliza"))
     }
 
+    @Test
+    fun `properties don't need to be the same instance`() {
+        val config = ConfigurationTemplate().withProp(userProperty, "eliza")
+        val sameButDifferentInstance = string("bob")
+
+        assertThat(config.reifyFrom(emptyMap()).valueOf(sameButDifferentInstance), equalTo("eliza"))
+    }
 }
